@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="FreeboardListDao">
+
+
+    <resultMap id="mapFreeboard" type="itor.example.test7.controller.FreeboardVO">
+        <result property="freeboard_no" column="freeboard_no"/>
+        <result property="user_no" column="user_no"/>
+        <result property="freeboard_title" column="freeboard_title"/>
+        <result property="freeboard_content" column="freeboard_content"/>
+        <result property="freeboard_readcount" column="freeboard_readcount"/>
+        <result property="freeboard_writedate" column="freeboard_writedate"/>
+    </resultMap>
+
+    <select id="selectList" resultType="itor.example.test7.controller.FreeboardVO">
+        SELECT * FROM FREEBOARD order by FREEBOARD_NO desc;
+    </select>
+
+    <select id="selectContentCount" resultType="int">
+        SELECT COUNT(*) FROM FREEBOARD ;
+    </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--    <select id="getList" resultType="itor.example.test7.controller.FreeboardVO">-->
+<!--       <![CDATA[-->
+<!--        select * from (-->
+<!--                          select ROW_NUMBER() over () runm,t1.* FROM (-->
+<!--                                                                         select f.* FROM freeboard f , user u-->
+<!--                                                                         WHERE f.user_no = u.USER_no-->
+<!--                                                                         order BY f.freeboard_no DESC)t1-->
+<!--                      )t2-->
+<!--        where t2.runm >=(#{page_num}-1)*20+1-->
+<!--          AND t2.runm <= #{page_num}*20;-->
+<!--        ]]>-->
+<!--    </select>-->
+
+<!--    <select id="selectContentCount" resultType="int">-->
+<!--        SELECT COUNT(*) FROM freeboard-->
+<!--    </select>-->
+
+</mapper>

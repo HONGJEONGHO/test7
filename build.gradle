@@ -1,0 +1,61 @@
+plugins {
+    id 'org.springframework.boot' version '2.5.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'itor.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+apply plugin : 'java'
+apply plugin : 'org.springframework.boot'
+apply plugin : 'io.spring.dependency-management'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+allprojects{
+    repositories{
+        mavenCentral()
+        maven{url "https://plugins.gradle.org/m2"}
+
+    }
+}
+
+
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter:2.5.4'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.5.4'
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.4'
+
+//  MyBatis 라이브러리 의존성 추가
+    runtimeOnly 'mysql:mysql-connector-java:8.0.25'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
+
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.5.4'
+
+    /* MySql */
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc:2.5.4'
+    implementation group : 'mysql' , name: 'mysql-connector-java' , version: '8.0.25'
+
+    /* log4j */
+    implementation 'org.slf4j:slf4j-api:1.7.32'
+    implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4:1.16'
+
+    //taglib
+    implementation 'org.springframework.security:spring-security-taglibs'
+
+}
+
+
+
+test {
+    useJUnitPlatform()
+}

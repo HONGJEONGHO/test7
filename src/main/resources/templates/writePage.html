@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <form action="writeProcess" method="post">
+      작성자 : <td th:text="${session.sessionUser.user_id}"></td><br>
+      제목 : <input text="text" name="freeboard_title" placeholder="제목을 입력해주세요"><br>
+      내용 : <br>
+      <textarea rows="10" cols="40" name="freeboard_content"></textarea><br>
+      <input type="submit" value="작성">
+  </form>
+</body>
+</html>
